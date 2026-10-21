@@ -1,0 +1,15 @@
+{
+  "name": "koishi-plugin-dyks-parser",
+  "version": "0.2.0",
+  "description": "抖音/快手链接解析，对接自建 Media-Parser 后端",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "koishi": {
+    "description": {
+      "zh": "抖音/快手链接解析（对接自建 Media-Parser，免费无水印）"
+    }
+  },
+  "peerDependencies": {
+    "koishi": "^4.18.0"
+  }
+}
