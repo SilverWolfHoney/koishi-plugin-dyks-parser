@@ -104,6 +104,14 @@ Koishi 与后端不在同一台机器时，把 `endpoint` 换成后端实际地�
 
 只解析平台公开的 UGC 短视频 / 图集。不解析 VIP、付费、会员专享、版权长视频，不做 DRM 绕过。后端解析接口来自平台网页端的公开接口，存在被风控的可能，触发时按后端文档配置对应平台的 Cookie 即可。
 
+## 致谢
+
+- [**ucmao/media-parser**](https://github.com/ucmao/media-parser)（MIT）：**本插件不自带任何解析能力**，抖音 / 快手的链接解析全部由这个后端项目完成。本插件只调用它的 HTTP 接口，不包含、也不修改它的代码（由使用者自行部署）。
+- [**koishi-plugin-bilibili-videolink-analysis**](https://www.npmjs.com/package/koishi-plugin-bilibili-videolink-analysis)（MIT）：合并转发的发送样式（`figure` + `message` 节点、消息结构）参考了它的实现。
+- [**Koishi**](https://koishi.chat/)：插件框架。
+
+本插件自身以 MIT 协议发布，见 [LICENSE](./LICENSE)。
+
 ## License
 
 MIT
