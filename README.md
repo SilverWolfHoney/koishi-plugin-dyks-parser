@@ -8,7 +8,8 @@
 
 ## 特性
 
-- 自动识别抖音（`douyin.com` / `iesdouyin.com` / `v.douyin.com` 短链）和快手（`kuaishou.com` / `v.kuaishou.com` 短链）链接，也支持从**引用消息**里提取
+- 自动识别抖音（`douyin.com` / `iesdouyin.com` / `v.douyin.com` 短链）和快手（`kuaishou.com` / `v.kuaishou.com` 短链）链接
+- **默认不解析引用消息**，也不会从合并转发（聊天记录）里抠链接；需要解析引用时开 `parseQuote`（仍会自动跳过转发消息）
 - 视频直链转发（或下载后发送）、图集、封面、标题 / 作者 / 简介
 - **合并转发**：与 [`koishi-plugin-bilibili-videolink-analysis`](https://www.npmjs.com/package/koishi-plugin-bilibili-videolink-analysis) 同款 `figure` + `message` 节点打包；失败自动降级为逐条发送
 - 同链接去重、请求超时、解析失败提示
@@ -82,6 +83,7 @@ Koishi 与后端不在同一台机器时，把 `endpoint` 换成后端实际地�
 | `maxImages` | `9` | 图集最多发送张数 |
 | `timeout` | `60000` | 请求超时（毫秒） |
 | `dedupeSeconds` | `30` | 同一链接去重秒数，0 为不去重 |
+| `parseQuote` | `false` | 解析引用消息里的链接（默认关闭；开启后仍会自动跳过合并转发 / 聊天记录） |
 | `command` | 空 | 仅响应以此开头的消息（如 `dyks`）；留空则自动识别所有消息 |
 
 ## 发送格式
