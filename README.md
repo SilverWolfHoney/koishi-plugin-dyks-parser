@@ -12,7 +12,7 @@
 - **默认不解析引用消息**，也不会从合并转发（聊天记录）里抠链接；需要解析引用时开 `parseQuote`（仍会自动跳过转发消息）
 - 视频直链转发（或下载后发送）、图集、封面、标题 / 作者 / 简介
 - **合并转发**：与 [`koishi-plugin-bilibili-videolink-analysis`](https://www.npmjs.com/package/koishi-plugin-bilibili-videolink-analysis) 同款 `figure` + `message` 节点打包；失败自动降级为逐条发送
-- 同链接去重、请求超时、解析失败提示
+- 同链接去重、请求超时、解析失败提示；"正在解析…"提示文案可自定义（`waitingText`，支持多行）
 - `command` 模式可让插件只响应以指定前缀开头的消息
 - 兼容 Koishi 4.18+ 的 `ctx.http`（直接返回响应体）与旧版 axios（`{ data }`）两种形态
 
@@ -80,6 +80,7 @@ Koishi 与后端不在同一台机器时，把 `endpoint` 换成后端实际地�
 | `sendInfo` | `true` | 发送标题 / 作者 / 平台 / 简介 / 原链接 |
 | `sendCover` | `false` | 发送封面图 |
 | `showWaiting` | `true` | 显示"正在解析…"提示 |
+| `waitingText` | `正在解析…` | 等待提示的自定义文案（支持多行）；留空则用默认文案 |
 | `maxImages` | `9` | 图集最多发送张数 |
 | `timeout` | `60000` | 请求超时（毫秒） |
 | `dedupeSeconds` | `30` | 同一链接去重秒数，0 为不去重 |
