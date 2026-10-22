@@ -64,7 +64,7 @@ plugins:
 
 > **配置 key 必须写短名 `dyks-parser`**，不要写 `koishi-plugin-dyks-parser`：Koishi 控制台的插件页会自己拼 `koishi-plugin-` 前缀，写全名会拼成 `koishi-plugin-koishi-plugin-...`，控制台显示"此插件尚未安装"（插件本身仍能加载，但无法在控制台改配置）。
 
-Koishi 与后端不在同一台机器时，把 `endpoint` 换成后端实际地址；Koishi 跑在 Docker 容器里、后端跑在宿主机时，用宿主机 docker 网关地址（通常是 `http://172.17.0.1:8051` 或 `http://172.18.0.1:8051`）。
+Koishi 与后端不在同一台机器时，把 `endpoint` 换成后端实际地址；Koishi 跑在 Docker 容器里、后端跑在宿主机时，用宿主机在容器网络里的网关地址（在宿主机执行 `ip addr show docker0` 查看；Docker Desktop 上可用 `host.docker.internal`）。
 
 ## 配置项
 
