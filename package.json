@@ -1,9 +1,30 @@
 {
   "name": "koishi-plugin-dyks-parser",
   "version": "0.2.2",
-  "description": "抖音/快手链接解析，对接自建 Media-Parser 后端",
+  "description": "抖音/快手链接解析，对接自建 Media-Parser 后端（免费无水印，支持合并转发）",
   "main": "lib/index.js",
   "license": "MIT",
+  "author": "SilverWolfHoney",
+  "keywords": [
+    "koishi",
+    "koishi-plugin",
+    "chatbot",
+    "douyin",
+    "kuaishou",
+    "media-parser",
+    "video-parser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SilverWolfHoney/koishi-plugin-dyks-parser.git"
+  },
+  "homepage": "https://github.com/SilverWolfHoney/koishi-plugin-dyks-parser#readme",
+  "bugs": {
+    "url": "https://github.com/SilverWolfHoney/koishi-plugin-dyks-parser/issues"
+  },
+  "files": [
+    "lib"
+  ],
   "koishi": {
     "description": {
       "zh": "抖音/快手链接解析（对接自建 Media-Parser，免费无水印）"
