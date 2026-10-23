@@ -9,6 +9,7 @@
 ## 特性
 
 - 自动识别抖音（`douyin.com` / `iesdouyin.com` / `v.douyin.com` 短链）和快手（`kuaishou.com` / `v.kuaishou.com` 短链）链接
+- **以 middleware 接管链接消息**：命中链接后不 `next()`，消息由本插件处理完即终止，不会触发对话类插件（chatluna 等）；非链接消息 `next()` 正常流转
 - **默认不解析引用消息**，也不会从合并转发（聊天记录）里抠链接；需要解析引用时开 `parseQuote`（仍会自动跳过转发消息）
 - 视频直链转发（或下载后发送）、图集、封面、标题 / 作者 / 简介
 - **合并转发**：与 [`koishi-plugin-bilibili-videolink-analysis`](https://www.npmjs.com/package/koishi-plugin-bilibili-videolink-analysis) 同款 `figure` + `message` 节点打包；失败自动降级为逐条发送
