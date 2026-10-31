@@ -1,7 +1,7 @@
 {
   "name": "koishi-plugin-dyks-parser",
-  "version": "1.0.1",
-  "description": "抖音/快手链接解析，对接自建 Media-Parser 后端（免费无水印，支持合并转发）",
+  "version": "1.0.2",
+  "description": "抖音/快手链接解析，需自建 Media-Parser 后端（免费无水印，支持合并转发）",
   "main": "lib/index.js",
   "license": "MIT",
   "author": "SilverWolfHoney",
@@ -27,8 +27,8 @@
   ],
   "koishi": {
     "description": {
-      "en": "Parse Douyin/Kuaishou share links through a self-hosted Media-Parser backend (free, watermark-free, supports merged forwarding).",
-      "zh": "抖音/快手链接解析（对接自建 Media-Parser，免费无水印）"
+      "en": "Parse Douyin/Kuaishou share links through a self-hosted Media-Parser backend (free, watermark-free, supports merged forwarding). Requires you to deploy the backend yourself.",
+      "zh": "抖音/快手链接解析（需自行部署 Media-Parser 后端，免费无水印）"
     }
   },
   "peerDependencies": {

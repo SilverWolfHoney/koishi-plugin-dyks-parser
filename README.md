@@ -8,6 +8,17 @@
 
 监听消息里的抖音 / 快手分享链接，调用本地解析服务，把视频或图集发到群里，支持合并转发。
 
+> [!IMPORTANT]
+> **本插件需要自行部署解析后端。** 插件本身不含解析逻辑，必须先在本地或服务器上跑起 [Media-Parser](https://github.com/ucmao/media-parser)，去水印直链解析全部由它完成。没有后端插件无法工作。
+>
+> 一条命令部署（需要 Docker；后端默认监听 `8051`）：
+>
+> ```bash
+> git clone https://github.com/ucmao/media-parser.git && cd media-parser && echo "API_ONLY=true" > .env && docker compose up -d --build
+> ```
+>
+> 验证：`curl http://127.0.0.1:8051/api/health` 返回 `{"status":"ok"}` 即可。
+
 > 解析能力不在 Koishi 侧：本插件只负责识别链接、调后端、发送媒体。后端是一个纯 Python 的本地解析服务，解析公开 UGC 内容，不走付费云网关，不需要平台官方 API。
 
 ## 特性
@@ -20,6 +31,7 @@
 - 同链接去重、请求超时、解析失败提示；"正在解析…"提示文案可自定义（`waitingText`，支持多行）
 - `command` 模式可让插件只响应以指定前缀开头的消息
 - 兼容 Koishi 4.18+ 的 `ctx.http`（直接返回响应体）与旧版 axios（`{ data }`）两种形态
+- 启动时自动检查后端健康状态，连不上时在日志中给出部署指引
 
 ## 前置：部署 Media-Parser 后端
 
@@ -61,7 +73,7 @@ curl "http://127.0.0.1:8051/api/health"
 
 ### 从插件市场安装（推荐）
 
-在 Koishi 控制台打开「插件市场」，搜索 `dyks-parser`（或包名 `koishi-plugin-dyks-parser`）安装，然后在「插件配置」里填写后端地址（`endpoint`）。
+在 Koishi 控制台打开「插件市场」，搜索 `dyks-parser`（或包名 `koishi-plugin-dyks-parser`）安装，然后在「插件配置」里填写后端地址（`endpoint`）。**装完别忘了先部署后端**。
 
 ### 使用包管理器安装
 
