@@ -1,5 +1,9 @@
 # koishi-plugin-dyks-parser
 
+[![npm](https://img.shields.io/npm/v/koishi-plugin-dyks-parser.svg)](https://www.npmjs.com/package/koishi-plugin-dyks-parser)
+[![npm downloads](https://img.shields.io/npm/dm/koishi-plugin-dyks-parser.svg)](https://www.npmjs.com/package/koishi-plugin-dyks-parser)
+[![license](https://img.shields.io/npm/l/koishi-plugin-dyks-parser.svg)](https://github.com/SilverWolfHoney/koishi-plugin-dyks-parser/blob/main/LICENSE)
+
 抖音 / 快手链接解析插件（对接自建 [Media-Parser](https://github.com/ucmao/media-parser) 后端，免费、无水印）。
 
 监听消息里的抖音 / 快手分享链接，调用本地解析服务，把视频或图集发到群里，支持合并转发。
@@ -54,6 +58,21 @@ curl "http://127.0.0.1:8051/api/health"
 抖音常规短视频 / 图集、快手常规短视频都支持匿名解析；触发风控时再按需在后端 `.env` 里配 `DOUYIN_COOKIE` / `KUAISHOU_COOKIE`。
 
 ## 安装
+
+### 从插件市场安装（推荐）
+
+在 Koishi 控制台打开「插件市场」，搜索 `dyks-parser`（或包名 `koishi-plugin-dyks-parser`）安装，然后在「插件配置」里填写后端地址（`endpoint`）。
+
+### 使用包管理器安装
+
+```bash
+cd /path/to/koishi-app
+npm install koishi-plugin-dyks-parser
+```
+
+安装后重启 Koishi（或让控制台热重载），在插件配置中启用 `dyks-parser`。
+
+### 从源码安装
 
 把本目录放到 Koishi 工作区（例如 `external/koishi-plugin-dyks-parser`），然后在 `koishi.yml` 启用：
 

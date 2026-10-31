@@ -1,6 +1,6 @@
 {
   "name": "koishi-plugin-dyks-parser",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "抖音/快手链接解析，对接自建 Media-Parser 后端（免费无水印，支持合并转发）",
   "main": "lib/index.js",
   "license": "MIT",
