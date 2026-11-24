@@ -26,7 +26,7 @@
 - 自动识别抖音（`douyin.com` / `iesdouyin.com` / `v.douyin.com` 短链）和快手（`kuaishou.com` / `v.kuaishou.com` 短链）链接
 - **以 middleware 接管链接消息**：命中链接后不 `next()`，消息由本插件处理完即终止，不会触发对话类插件（chatluna 等）；非链接消息 `next()` 正常流转
 - **默认不解析引用消息**，也不会从合并转发（聊天记录）里抠链接；需要解析引用时开 `parseQuote`（仍会自动跳过转发消息）
-- 视频直链转发（或下载后发送）、图集、封面、标题 / 作者 / 简介
+- 视频 / 图片可选四种传递方式（`url` / `buffer` / `base64` / `file`）、图集、封面、标题 / 作者 / 简介
 - **合并转发**：与 [`koishi-plugin-bilibili-videolink-analysis`](https://www.npmjs.com/package/koishi-plugin-bilibili-videolink-analysis) 同款 `figure` + `message` 节点打包；失败自动降级为逐条发送
 - **合并转发时自动内联远程媒体**：转发前把 `http(s)` 图片 / 视频下载成 base64 `data URI` 再放进 `message` 节点，解决 ChatLuna v2 / NapCat 等环境在合并转发里不会代拉远程媒体、导致裂图 / 媒体丢失的问题（代价是消息体积变大）
 - 同链接去重、请求超时、解析失败提示；"正在解析…"提示文案可自定义（`waitingText`，支持多行）
@@ -109,7 +109,8 @@ Koishi 与后端不在同一台机器时，把 `endpoint` 换成后端实际地�
 | `enableKuaishou` | `true` | 解析快手链接 |
 | `useForward` | `true` | 合并转发（仅 onebot / napcat / red / yunhu / telegram / discord；失败自动降级逐条发送） |
 | `forwardNickname` | 空 | 合并转发节点昵称；留空用发链接用户的昵称 |
-| `videoMode` | `url` | `url` 直链转发；发不出去时改 `buffer` 先下载再发 |
+| `imageTransferMode` | `buffer` | 图片传递方式：`buffer` 下载后以 Buffer 发送 / `url` 直链 / `base64` 内联 / `file` 下载为本地文件后发送（NapCat 读取文件上传） |
+| `videoTransferMode` | `file` | 视频传递方式：同上四种。大视频建议用 `file`；`buffer` / `base64` 会把整个视频放进内存，小内存机器易 OOM |
 | `sendInfo` | `true` | 发送标题 / 作者 / 平台 / 简介 / 原链接 |
 | `sendCover` | `false` | 发送封面图 |
 | `showWaiting` | `true` | 显示"正在解析…"提示 |
@@ -140,7 +141,8 @@ Koishi 与后端不在同一台机器时，把 `endpoint` 换成后端实际地�
 
 - `peerDependencies`: `koishi ^4.18.0`
 - 不声明任何 npm 依赖，`require('koishi')` 从 Koishi 工作区解析
-- 发送视频直链时由适配器自己去拉取；如果适配器拉不动直链，把 `videoMode` 改为 `buffer`
+- 发送视频直链时由适配器自己去拉取；如果适配器拉不动直链，把 `videoTransferMode` 改为 `buffer`（会先下载再发）
+- 内存较小的机器（如 1.6 GB）建议保持视频默认的 `file` 模式：大视频经 `buffer` / `base64` 会整段进内存，可能把接端进程（NapCat 等）撑到 OOM
 
 ## 边界
 
